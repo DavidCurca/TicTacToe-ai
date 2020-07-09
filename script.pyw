@@ -13,7 +13,7 @@ o_pic = image.load('imgs/o.png')
 window = pyglet.window.Window(500,495, 'tic-tac-toe', fullscreen=False)
 window.set_icon(icon_pic)
 can_reset = False
-ai,human = 1,2
+ai,human = 2,1
 
 @window.event
 def on_close():
@@ -46,7 +46,7 @@ def on_mouse_press(x, y, button, modifiers):
             for i in range(3):
                 for j in range(3):
                     grid[i][j] = 0
-            grid[0][0] = ai
+            #grid[0][0] = ai
 
 def bestMove():
     bestScore = -math.inf
@@ -91,8 +91,8 @@ def checkWinner():
         return None
     
 scores = {
-    'X': 10,
-    'O': -10,
+    'X': -10,
+    'O': 10,
     'tie': 0
 }
 
@@ -147,6 +147,6 @@ def update(self):
     if(result != None):
         can_reset = True
 
-grid[0][0] = ai
+#grid[0][0] = ai
 pyglet.clock.schedule_interval(update, 1/60.0)
 pyglet.app.run()
